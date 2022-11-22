@@ -1,0 +1,13 @@
+<form [formGroup]="countryGroup">
+    <mat-form-field class="mat-form-field" appearance="fill">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="country">
+            <mat-option>
+                <ngx-mat-select-search formControlName="countryFilter" placeholderLabel="Enter country..."></ngx-mat-select-search>
+            </mat-option>
+            <mat-option *ngFor="let country of filteredCountries" [value]="country">
+                {{country.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>

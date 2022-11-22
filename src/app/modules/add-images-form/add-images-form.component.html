@@ -1,0 +1,8 @@
+<input #imageInput type="file" (change)="addImage($event)" id="input" [style.display]="'none'" multiple="true">
+<button mat-button (click)="imageInput.click()">Chose Image</button>
+
+<button mat-button (click)="clearImages()" [disabled]="imageSliderBlob.imagesBlobed.length <= 0"><mat-icon>delete</mat-icon></button>
+
+<div class="image-slider">
+    <app-sight-image-slider [imageSlider]="imageSliderBlob"></app-sight-image-slider>
+</div>

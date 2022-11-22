@@ -1,0 +1,27 @@
+.container {
+    margin-top: 200px;
+}
+
+.loginForm {
+    margin: auto;
+    min-width: 200px;
+    max-width: 400px;
+}
+
+.userInvalidForm {
+    color: red;
+}
+
+.mat-card-title {
+    text-align: center;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.button {
+    display: flex;
+    justify-content: flex-end;
+    color: darkgray;
+}

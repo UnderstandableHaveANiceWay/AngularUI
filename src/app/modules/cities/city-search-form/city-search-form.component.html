@@ -1,0 +1,13 @@
+<form [formGroup]="cityGroup">
+    <mat-form-field class="mat-form-field" appearance="fill">
+        <mat-label>City</mat-label>
+        <mat-select formControlName="city">
+            <mat-option>
+                <ngx-mat-select-search formControlName="cityFilter" placeholderLabel="Enter city..."></ngx-mat-select-search>
+            </mat-option>
+            <mat-option *ngFor="let city of filteredCities" [value]="city">
+                {{city.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>

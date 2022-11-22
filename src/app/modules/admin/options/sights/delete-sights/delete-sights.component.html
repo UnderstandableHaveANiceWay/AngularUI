@@ -1,0 +1,22 @@
+<div class="container">
+    <ng-container class="search">
+        <app-country-search-form [countries]="countries" (countryEvent)="setCountry($event)"></app-country-search-form>
+        <app-city-search-form [cities]="cities" (cityEvent)="setCity($event)"></app-city-search-form>
+    </ng-container>
+
+    <mat-card>
+        <mat-card-title>Delete</mat-card-title>
+        <mat-card-content>
+            <app-filter [items]="sights" [filterFunction]="filterFunction"></app-filter>
+
+            <ng-container *ngFor="let sight of filteredItems" class="form-input">
+                <h1>
+                    {{ sight.name }}
+                    <button mat-button (click)="delete(sight)" [disabled]="bisy"><mat-icon>delete</mat-icon></button>
+                    <span *ngIf="failed" class="error">Deleting failed</span>
+                </h1>
+            </ng-container>
+
+        </mat-card-content>
+    </mat-card>
+</div>

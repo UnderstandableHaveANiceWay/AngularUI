@@ -1,0 +1,26 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title>Create</mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="form">
+                <mat-form-field>
+                    <mat-label>Countries</mat-label>
+                    <input
+                        matInput
+                        formControlName="country"
+                        required
+                        minlength="3"
+                        >
+                    <mat-hint>(3 or more)</mat-hint>
+                </mat-form-field>
+
+                <button mat-button (click)="sendForm()" [disabled]="bisy">Add</button>
+            </form>
+
+            <ng-container>
+                <span *ngIf="failed" class="error">Adding failed</span>
+                <span *ngIf="completed" class="success">Succesfully added</span>
+            </ng-container>
+        </mat-card-content>
+    </mat-card>
+</div>

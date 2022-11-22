@@ -1,0 +1,22 @@
+<nav class="navbar ">
+    <div class="container">
+        <img class="header-image navbar-brand" src="../../assets/img/header-logo.png">
+        <ul class="nav navbar-right">
+            <li *ngIf="userInRole('admin')" class="nav-item">
+                <a class="nav-link" routerLink="admin/options/page">admin options</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="sight/search">see sights</a>
+            </li>
+            <li class="nav-item" *ngIf="isLoggedOut()">
+                <a class="nav-link" routerLink="account/login">log in</a>
+            </li>
+            <li class="nav-item" *ngIf="isLoggedOut()">
+                <a class="nav-link" routerLink="account/logup">log up</a>
+            </li>
+            <li class="nav-item" *ngIf="isLoggedIn()">
+                <a class="nav-link" (click)="logout()">logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>

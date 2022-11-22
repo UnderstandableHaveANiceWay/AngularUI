@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="grid-list">
+        <div
+            (mouseenter)="mouseMoveOnCountries($event)"
+            (mouseleave)="mouseMoveOnCountries($event)"
+            class="grid-tile-hover-control"
+        >
+            <div class="grid-tile" *ngIf="!countriesHovered; else options">
+                Countries
+            </div>
+        </div>
+
+        <div
+            (mouseenter)="mouseMoveOnCities($event)"
+            (mouseleave)="mouseMoveOnCities($event)"
+            class="grid-tile-hover-control"
+        >
+            <div class="grid-tile" *ngIf="!citiesHovered; else options">
+                Cities
+            </div>
+        </div>
+
+        <div
+            (mouseenter)="mouseMoveOnSights($event)"
+            (mouseleave)="mouseMoveOnSights($event)"
+            class="grid-tile-hover-control"
+        >
+            <div class="grid-tile" *ngIf="!sightsHovered; else options">
+                Sights
+            </div>
+        </div>
+
+        <div
+            (mouseenter)="mouseMoveOnUsers($event)"
+            (mouseleave)="mouseMoveOnUsers($event)"
+            class="grid-tile-hover-control"
+        >
+            <div class="grid-tile" *ngIf="!usersHovered; else options">
+                Users
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #options>
+    <div class="grid-tile-invisible">
+        <mat-list>
+            <mat-list-item>
+                <button mat-button (click)="add()">
+                    <mat-icon>add_circle_outline</mat-icon> Add
+                </button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button (click)="update()">
+                    <mat-icon>edit</mat-icon> Edit
+                </button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button (click)="delete()">
+                    <mat-icon>delete</mat-icon> Delete
+                </button>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</ng-template>

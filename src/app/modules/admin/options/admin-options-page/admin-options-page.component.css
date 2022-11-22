@@ -1,0 +1,49 @@
+.grid-list {
+    margin: auto;
+    margin-top: 150px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+}
+
+.grid-tile-hover-control {
+    width: 300px;
+    height: 150px;
+    border-radius: 20px;
+}
+
+.grid-tile, .grid-tile-invisible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    background-color: gainsboro;
+
+    transition-duration: 600ms;
+}
+
+.grid-tile:hover, .grid-tile-invisible:hover {
+    transition-duration: 600ms;
+}
+
+.grid-tile {
+    opacity: 1;
+}
+
+.grid-tile:hover {
+    font-weight: 600;
+    font-size: 15px;
+    opacity: 0;
+}
+
+.grid-tile-invisible {
+    opacity: 0;
+}
+
+.grid-tile-invisible:hover {
+    opacity: 1;
+}

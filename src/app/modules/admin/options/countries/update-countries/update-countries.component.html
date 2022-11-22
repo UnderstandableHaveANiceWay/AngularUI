@@ -1,0 +1,42 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title>Update</mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="searchGroup">
+                <mat-form-field>
+                    <input matInput formControlName="searchCountry" placeholder="Enter country...">
+                </mat-form-field>
+                <button mat-button (click)="search()" [disabled]="bisy">Search</button>
+            </form>
+
+            <ng-container *ngFor="let country of filteredCountries" class="form-input">
+                <h1>
+                    {{ country.name }}
+                    <button mat-button (click)="showInput(country.name)"><mat-icon>edit</mat-icon></button>
+                </h1>
+                <ng-container *ngIf="country.name != shownUpdateByCountryName; else formUpdate">
+                </ng-container>
+            </ng-container>
+
+            <ng-container>
+                <span *ngIf="failed" class="error">Updating failed</span>
+            </ng-container>
+
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<ng-template #formUpdate>
+    <form [formGroup]="updateGroup">
+        <mat-form-field>
+            <input
+                placeholder="Enter country..."
+                matInput
+                minlength="3"
+                formControlName="updateCountry"
+            >
+            <mat-hint>(3 or more)</mat-hint>
+        </mat-form-field>
+        <button mat-button (click)="update()">Update</button>
+    </form>
+</ng-template>

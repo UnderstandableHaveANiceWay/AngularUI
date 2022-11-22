@@ -1,0 +1,16 @@
+<div class="container selector">
+    <button mat-button (click)="onHotTrip()" [disabled]="loadHotTrip">Hot trip<mat-icon [color]="hotColor">whatshot</mat-icon></button>
+    <app-country-search-form [countries]="countries" (countryEvent)="loadCities($event)"></app-country-search-form>
+    <app-city-search-form [cities]="cities" (cityEvent)="loadSights($event)"></app-city-search-form>
+
+    <mat-spinner *ngIf="bisy"></mat-spinner>
+</div>
+
+<ng-container *ngFor="let imageSlider of imageSliders">
+    <div class="container" *ngIf="imageSlider.imageObjects.length > 0">
+        <a [routerLink]="'/sight/' + imageSlider.sight.id">
+            <h1>{{ imageSlider.sight.name }}</h1>
+        </a>
+        <app-sight-image-slider [imageSlider]="imageSlider"></app-sight-image-slider>
+    </div>
+</ng-container>

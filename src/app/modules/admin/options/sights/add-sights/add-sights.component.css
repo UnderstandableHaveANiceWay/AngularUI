@@ -1,0 +1,15 @@
+.container {
+    margin-top: 200px;
+}
+
+.search {
+    width: 250px;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}

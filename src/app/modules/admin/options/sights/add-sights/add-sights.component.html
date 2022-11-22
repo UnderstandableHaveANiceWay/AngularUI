@@ -1,0 +1,38 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title>Create sight</mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="form" class="search">
+                <mat-form-field>
+                    <input
+                        matInput
+                        formControlName="sight"
+                        >
+                    <mat-hint>(3 or more)</mat-hint>
+                    <mat-error *ngIf="form.controls['country'].errors?.['countryNotChosen']; else invalidCity">choose a country</mat-error>
+
+                    <ng-template #invalidCity>
+                        <mat-error *ngIf="form.controls['city'].errors?.['cityNotChosen']; else invalidForm">choose a city</mat-error>
+                    </ng-template>
+
+                    <ng-template #invalidForm>
+                        <mat-error>invalid sight name</mat-error>
+                    </ng-template>
+
+                </mat-form-field>
+
+                <app-country-search-form [countries]="countries" (countryEvent)="setCountry($event)"></app-country-search-form>
+                <app-city-search-form [cities]="cities" (cityEvent)="setCity($event)"></app-city-search-form>
+
+                <app-add-images-form [imageSliderBlob]="imageSliderBlob"></app-add-images-form>
+
+                <button mat-button (click)="sendForm()" [disabled]="bisy">Add</button>
+            </form>
+            
+            <ng-container>
+                <span *ngIf="failed" class="error">Adding failed</span>
+                <span *ngIf="completed" class="success">Succesfully added</span>
+            </ng-container>
+        </mat-card-content>
+    </mat-card>
+</div>

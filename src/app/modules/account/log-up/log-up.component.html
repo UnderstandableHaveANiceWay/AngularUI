@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="logupForm">
+        <mat-card>
+            <mat-card-title>Logup</mat-card-title>
+            <mat-card-content>
+                <form [formGroup]="form">
+                    <mat-form-field>
+                        <mat-label>Username</mat-label>
+                        <input
+                            matInput
+                            formControlName="username"
+                            required
+                            [minlength]="6">
+
+                        <mat-hint>(6 or more)</mat-hint>
+
+                        <mat-error *ngIf="form.controls['username'].errors?.['unavailable']; else invalidUsername">
+                            Already exist account with this username
+                        </mat-error>
+                        <ng-template #invalidUsername>
+                            <mat-error *ngIf="form.invalid && form.touched">Invalid username</mat-error>
+                        </ng-template>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input
+                            type="password"
+                            matInput
+                            formControlName="password"
+                            required
+                            [minlength]="4">
+
+                        <mat-hint>(4 or more)</mat-hint>
+
+                        <mat-error>Invalid password</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input
+                            matInput
+                            formControlName="email"
+                            required>
+
+                        <mat-hint>required</mat-hint>
+
+                        <mat-error *ngIf="form.controls['email'].errors?.['unavailable']; else invalidEmail">
+                            Already exist account with this email
+                        </mat-error>
+                        <ng-template #invalidEmail>
+                            <mat-error>Invalid email</mat-error>
+                        </ng-template>
+                    </mat-form-field>
+                    
+                    <div class="button" [attr.disabled]="true">
+                        <button type="submit" (click)="sendForm()" mat-button>Logup</button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

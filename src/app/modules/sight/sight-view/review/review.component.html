@@ -1,0 +1,46 @@
+<div class="container">
+    <ng-container *ngIf="reviews.length > 0">
+        <ng-container *ngFor="let review of pageReviews">
+            <div class="review-from-sight">
+                <h3>{{ review.rating }} / {{ starCount }}</h3>
+                <h2><mat-icon>portrait</mat-icon> {{ review.user.username }}</h2>
+                <p>{{ review.text }}</p>
+            </div>
+        </ng-container>
+
+        <app-review-paginator [pageSize]="pageReviewsSize"
+                              [reviews]="reviews" 
+                              (pageChangeEvent)="changeReviewPage($event)">
+        </app-review-paginator>
+        
+    </ng-container>
+    <form [formGroup]="reviewGroup" class="review-group" *ngIf="userIsLogged()">
+        <mat-label>Leave your review</mat-label>
+        <div>
+            <button mat-icon-button *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i" (click)="onClick(i+1)" [matTooltip]="ratingId+1 + ''" matTooltipPosition="above">
+                <mat-icon>
+                  {{showIcon(i)}}
+                </mat-icon>
+            </button>
+            <mat-error *ngIf="starCount == null || starCount == 0">
+            Star count is <strong>required</strong> and cannot be zero
+            </mat-error>
+            <p class="body-2">
+                Your rated <span class="body-2">{{rating}}</span> / <span class="body-2">{{starCount}}</span>
+            </p>
+        </div>
+        
+        <mat-form-field>
+            <textarea matInput
+                      formControlName="text"
+                      cdkTextareaAutosize
+                      cdkAutosizeMinRows="1"
+                      cdkAutosizeMaxRows="5"
+                      placeholder="Review text...">
+            </textarea>
+            <div class="send-review">
+                <button mat-button (click)="sendReview()">leave review</button>
+            </div>
+        </mat-form-field>
+    </form>
+</div>
